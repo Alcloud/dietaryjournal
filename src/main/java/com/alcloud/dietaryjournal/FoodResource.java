@@ -1,16 +1,42 @@
 package com.alcloud.dietaryjournal;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import com.alcloud.dietaryjournal.model.Food;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/foods")
 public class FoodResource {
 
+    private FoodService foodService = new FoodService();
+
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "hello";
+    @Path("/{foodId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Food getFood(@PathParam("foodId") long foodId) {
+        return foodService.getFoodById(foodId);
+    }
+
+    @GET
+    @Path("/allfood")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Food> getAllFood() {
+        return foodService.getAllFood();
+    }
+
+    @POST
+    @Path("/{userId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Long addFood(Food food) {
+        return foodService.addFood(food);
+    }
+
+    @DELETE
+    @Path("/{foodId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Food removeFood(@PathParam("foodId") long foodId) {
+        return foodService.removeFood(foodId);
     }
 }

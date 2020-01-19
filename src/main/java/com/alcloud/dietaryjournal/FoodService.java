@@ -17,6 +17,10 @@ public class FoodService {
 
     private Map<Long, Food> foods = new HashMap<>();
 
+    Food getFoodById(long id) {
+        return foods.get(id);
+    }
+
     List<Food> getAllFood(){
         return new ArrayList<>(foods.values());
     }
@@ -30,9 +34,5 @@ public class FoodService {
 
     Food removeFood(long id){
         return foods.remove(id);
-    }
-
-    public Food getFoodById(long id) {
-        return foods.get(id);
     }
 }
