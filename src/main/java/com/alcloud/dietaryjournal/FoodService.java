@@ -2,10 +2,7 @@ package com.alcloud.dietaryjournal;
 
 import com.alcloud.dietaryjournal.model.Food;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FoodService {
 
@@ -21,8 +18,16 @@ public class FoodService {
         return foods.get(id);
     }
 
-    List<Food> getAllFood(){
-        return new ArrayList<>(foods.values());
+    List<Food> getAllFood(String userId, Date dateLow, Date dateHigh){
+        List<Food> sortedByDateFood = new ArrayList<>();
+        for (Food food: foods.values()){
+            if(food.getUserId().equals(userId) &&
+                    food.getDate().compareTo(dateLow) > 0 &&
+                    food.getDate().compareTo(dateHigh) < 0){
+                sortedByDateFood.add(food);
+            }
+        }
+        return sortedByDateFood;
     }
 
     Long addFood(Food food){

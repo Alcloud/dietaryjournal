@@ -11,7 +11,7 @@ public class Food {
     private String userId;
     private int portion;
     private int weight;
-    private Date created;
+    private Date created = new Date();
 
     public Food() {
 
@@ -38,6 +38,10 @@ public class Food {
 
     public int getWeight() {
         return weight;
+    }
+
+    public Date getDate() {
+        return created;
     }
 
     public void setId(long id) {

@@ -4,6 +4,7 @@ import com.alcloud.dietaryjournal.model.Food;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Date;
 import java.util.List;
 
 @Path("/foods")
@@ -19,10 +20,12 @@ public class FoodResource {
     }
 
     @GET
-    @Path("/allfood")
+    @Path("/{userId}/{datelow}/{datehigh}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Food> getAllFood() {
-        return foodService.getAllFood();
+    public List<Food> getAllFood(@PathParam("userId") String userId,
+                                 @PathParam("datelow") long datelow,
+                                 @PathParam("datehigh") long datehigh) {
+        return foodService.getAllFood(userId, new Date(datelow), new Date(datehigh));
     }
 
     @POST
