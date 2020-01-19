@@ -1,27 +1,26 @@
 package com.alcloud.dietaryjournal.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
+@XmlRootElement
 public class Food {
 
-    private String id;
+    private long id;
     private String name;
     private String userId;
-    private Amount amount;
-    private Date addTime;
+    private int portion;
+    private int weight;
+    private Date created;
 
-    public Food(String id, String name, String userId, Amount amount, Date addTime) {
-        this.id = id;
-        this.name = name;
-        this.userId = userId;
-        this.amount = amount;
-        this.addTime = addTime;
+    public Food() {
+
     }
 
     /**
      * @return the food id
      */
-    public String getId() {
+    public long getId() {
         return id;
     }
 
@@ -33,11 +32,31 @@ public class Food {
         return userId;
     }
 
-    public Amount getAmount() {
-        return amount;
+    public int getPortion() {
+        return portion;
     }
 
-    public Date getAddTime() {
-        return addTime;
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setPortion(int portion) {
+        this.portion = portion;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 }
