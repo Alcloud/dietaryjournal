@@ -7,6 +7,14 @@ import javax.ws.rs.core.MediaType;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The FoodResource class describes API for the frontend
+ *
+ * @author  Aleksei Piatkin
+ * @version 1.0
+ * @since   2020-01-19
+ */
+
 @Path("/foods")
 public class FoodResource {
 
@@ -29,7 +37,6 @@ public class FoodResource {
     }
 
     @POST
-    @Path("/{userId}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Long addFood(Food food) {
