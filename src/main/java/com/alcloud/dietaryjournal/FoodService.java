@@ -1,16 +1,14 @@
 package com.alcloud.dietaryjournal;
 
 import com.alcloud.dietaryjournal.model.Food;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
-public class FoodService {
+class FoodService {
 
-    private static FoodService ourInstance = new FoodService();
-
-    public static FoodService getInstance(){
-        return ourInstance;
-    }
+    private final Logger logger = LoggerFactory.getLogger(FoodService.class);
 
     private Map<Long, Food> foods = new HashMap<>();
 
@@ -33,6 +31,14 @@ public class FoodService {
     Long addFood(Food food){
         long id = (foods.size() + 1);
         food.setId(id);
+        if (food.getPortion() < 0){
+            food.setPortion(0);
+            logger.warn("The portion must be positive");
+        }
+        if (food.getWeight() < 0){
+            food.setWeight(0);
+            logger.warn("The weight must be positive");
+        }
         foods.put(food.getId(), food);
         return id;
     }
