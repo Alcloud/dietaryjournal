@@ -1,4 +1,4 @@
-package com.alcloud.dietaryjournal;
+package com.alcloud.dietaryjournal.controller;
 
 import com.alcloud.dietaryjournal.model.Food;
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ class FoodService {
     }
 
     /**
-     * @param userId
+     * @param userId - user id
      * @param dateLow - date begin
      * @param dateHigh - end date
      * @return list of the sorted by date food items

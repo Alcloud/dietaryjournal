@@ -67,24 +67,24 @@ public class Food {
     }
 
     /**
-     * Set the food id
-     * @param id
+     * Set the
+     * @param id - food id
      */
     public void setId(long id) {
         this.id = id;
     }
 
     /**
-     * Set the portion
-     * @param portion
+     * Set the
+     * @param portion - portion
      */
     public void setPortion(int portion) {
         this.portion = portion;
     }
 
     /**
-     * Set the weight
-     * @param weight
+     * Set the
+     * @param weight - weight
      */
     public void setWeight(int weight) {
         this.weight = weight;

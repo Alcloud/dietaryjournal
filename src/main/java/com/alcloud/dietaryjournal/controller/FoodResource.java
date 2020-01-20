@@ -1,4 +1,4 @@
-package com.alcloud.dietaryjournal;
+package com.alcloud.dietaryjournal.controller;
 
 import com.alcloud.dietaryjournal.model.Food;
 
