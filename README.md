@@ -78,7 +78,7 @@ Body:
   ```
   
 POST Response example:
-  ```1
+  ```"1"
   ```
 ## DELETE
 
@@ -105,3 +105,8 @@ DELETE Response example:
         "weight": 300
     }
   ```
+
+# Compile and start the project
+
+  ```mvn compile quarkus:dev
+    ```
