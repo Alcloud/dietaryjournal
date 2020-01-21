@@ -1,0 +1,163 @@
+swagger: "2.0"
+info:
+  description: "A java service, that provide a REST API for an dietary journal app, that allows the user to track what he eats in a day"
+  version: "1.0.0"
+  title: "Dietary Journal"
+  termsOfService: ""
+  contact:
+    email: "al.pyatkin@gmail.com"
+host: "localhost:8080"
+basePath: "/foods"
+tags:
+- name: "food"
+  description: "Food items"
+schemes:
+- "https"
+- "http"
+paths:
+  /:
+    post:
+      tags:
+      - "food"
+      summary: "Add a new food to the journal"
+      description: ""
+      operationId: "addFood"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Food object that needs to be added to the journal"
+        required: true
+        schema:
+          $ref: "#/definitions/Food"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Food"
+        405:
+          description: "Invalid input"
+  /{userId}/{datelow}/{datehigh}:
+    get:
+      tags:
+      - "food"
+      summary: "Finds Foods by UserId and with a optional from and to date"
+      description: "Returns a filtered food list"
+      operationId: "findAllFoodByUserAndDate"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "User Id of food to return"
+        required: true
+        type: "string"
+        format: ""
+      - name: "datelow"
+        in: "path"
+        description: "Start date of search filter"
+        required: true
+        type: "string"
+        format: "date-time"
+      - name: "datehigh"
+        in: "path"
+        description: "End date of search filter"
+        required: true
+        type: "string"
+        format: "date-time"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Food"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Food not found"
+  /{id}:
+    get:
+      tags:
+      - "food"
+      summary: "Find food by User ID"
+      description: "Returns a list of food for an user"
+      operationId: "getFoodByUserId"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "User Id of food to return"
+        required: true
+        type: "string"
+        format: ""
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Food"
+        400:
+          description: "Invalid userID supplied"
+        404:
+          description: "Food not found"
+    delete:
+      tags:
+      - "food"
+      summary: "Remove a food"
+      description: "Remove a food item by Id"
+      operationId: "removeFood"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Food id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Food"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Food not found"
+
+definitions:
+  Food:
+    type: "object"
+    required:
+    - "id"
+    - "name"
+    - "userId"
+    - "portion"
+    - "weight"
+    - "created"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+        example: 1
+      name:
+        type: "string"
+        example: "apple"
+      userId:
+        type: "string"
+        example: "user1"
+      portion:
+        type: "integer"
+        format: ""
+        example: 2
+      weight:
+        type: "integer"
+        format: ""
+        example: 50
+      created:
+        type: "string"
+        format: "date-time"
+    xml:
+      name: "Food"

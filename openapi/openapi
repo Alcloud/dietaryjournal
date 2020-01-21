@@ -1,0 +1,121 @@
+---
+openapi: 3.0.1
+info:
+  title: Generated API
+  version: "1.0"
+paths:
+  /foods:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Food'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                format: int64
+                type: integer
+  /foods/{foodId}:
+    get:
+      parameters:
+      - name: foodId
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Food'
+    delete:
+      parameters:
+      - name: foodId
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Food'
+  /foods/{userId}:
+    get:
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFood'
+  /foods/{userId}/{datelow}/{datehigh}:
+    get:
+      parameters:
+      - name: datehigh
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - name: datelow
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFood'
+components:
+  schemas:
+    Date:
+      format: date
+      type: string
+    Food:
+      type: object
+      properties:
+        created:
+          $ref: '#/components/schemas/Date'
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        portion:
+          format: int32
+          type: integer
+        userId:
+          type: string
+        weight:
+          format: int32
+          type: integer
+        date:
+          $ref: '#/components/schemas/Date'
+    ListFood:
+      $ref: '#/components/schemas/ListFood'
