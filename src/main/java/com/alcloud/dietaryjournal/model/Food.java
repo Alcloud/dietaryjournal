@@ -89,4 +89,28 @@ public class Food {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    /**
+     * Set the
+     * @param name - name of the food
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Set the
+     * @param userId - user Id
+     */
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    /**
+     * Set the
+     * @param created - date of created food item
+     */
+    public void setCreated(Date created) {
+        this.created = created;
+    }
 }

@@ -19,7 +19,7 @@ class FoodService {
     private final Logger logger = LoggerFactory.getLogger(FoodService.class);
 
     // Database replacement. For test purposes only!
-    private Map<Long, Food> foods = new HashMap<>();
+    Map<Long, Food> foods = new HashMap<>();
 
     /**
      * @param id - food id
@@ -42,8 +42,8 @@ class FoodService {
             // Check if the request matches the specified time period and user.
             if (food.getUserId() != null && dateLow != null && dateHigh != null) {
                 if (food.getUserId().equals(userId) &&
-                        food.getDate().compareTo(dateLow) > 0 &&
-                        food.getDate().compareTo(dateHigh) < 0) {
+                        food.getDate().compareTo(dateLow) >= 0 &&
+                        food.getDate().compareTo(dateHigh) <= 0) {
                     sortedByDateFood.add(food);
                 }
             }

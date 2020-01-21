@@ -1,5 +1,6 @@
-package com.alcloud.dietaryjournal;
+package com.alcloud.dietaryjournal.controller;
 
+import com.alcloud.dietaryjournal.controller.FoodResourceTest;
 import io.quarkus.test.junit.NativeImageTest;
 
 @NativeImageTest

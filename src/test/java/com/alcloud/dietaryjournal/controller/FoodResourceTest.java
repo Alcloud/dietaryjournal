@@ -1,4 +1,4 @@
-package com.alcloud.dietaryjournal;
+package com.alcloud.dietaryjournal.controller;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
