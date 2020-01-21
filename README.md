@@ -1,30 +1,107 @@
-# dietaryjournal project
+# Dietary Journal API
 
+This project provides a REST API for an dietary journal app, that allows the user to track what he eats in a day.
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## URL
 
-## Running the application in dev mode
-
-You can run your application in dev mode that enables live coding using:
+localhost with port 8080 is used for test purposes
 ```
-./mvnw quarkus:dev
+http://localhost:8080
 ```
 
-## Packaging and running the application
+## GET 
 
-The application is packageable using `./mvnw package`.
-It produces the executable `com.alcloud.dietaryjournal-1.0-SNAPSHOT-runner.jar` file in `/target` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/lib` directory.
+   **Get list of food for specific user**
+  ``` 
+   /foods/{userId}
+ ```
+ where
+   `userId=[string]`
 
-The application is now runnable using `java -jar target/com.alcloud.dietaryjournal-1.0-SNAPSHOT-runner.jar`.
+GET Request example:
+  ```GET /foods/4 
+Host: localhost:8080
+Content-Type: application/json
+Cache-Control: no-cache
+  ```
+   **Get list of food for specific user and date filter**
+  ``` 
+   /{userId}/{dateStart}/{dateEnd}
+ ```
+ where
+   `userId=[string]`
+   `dateStart=[long]`
+   `dateEnd=[long]`
 
-## Creating a native executable
+GET Request example:
+  ```GET /foods/4/1579598718223/1579599042409
+Host: localhost:8080
+Content-Type: application/json
+Cache-Control: no-cache
+  ```
+  
+GET Response example:
+  ```[
+    {
+        "date": "2020-01-21T13:45:24.194Z[UTC]",
+        "id": 1,
+        "name": "apple",
+        "portion": 2,
+        "userId": "4",
+        "weight": 300
+    },
+    {
+        "date": "2020-01-21T13:45:43.002Z[UTC]",
+        "id": 2,
+        "name": "pineapple",
+        "portion": 1,
+        "userId": "4",
+        "weight": 400
+    }
+]
+  ```
+## POST
 
-You can create a native executable using: `./mvnw package -Pnative`.
+   **Add a new food**
+  ``` 
+   /foods
+ ```
+POST Request example:
+  ```POST /foods
+Host: localhost:8080
+Content-Type: application/json
+cache-control: no-cache
 
-Or you can use Docker to build the native executable using: `./mvnw package -Pnative -Dquarkus.native.container-build=true`.
+Body:
+{"portion":2,"weight":300,"name":"apple","userId":"4"}
+  ```
+  
+POST Response example:
+  ```1
+  ```
+## DELETE
 
-You can then execute your binary: `./target/com.alcloud.dietaryjournal-1.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/building-native-image-guide .
+   **Remove new food by ID**
+  ``` 
+   /foods/{id}
+ ```
+where
+   `id=[long]`
+   
+DELETE Request example:
+  ```DELETE /foods/1
+Host: localhost:8080
+Content-Type: application/json
+cache-control: no-cache
+  ```
+DELETE Response example:
+  ```{
+        "date": "2020-01-21T13:45:24.194Z[UTC]",
+        "id": 1,
+        "name": "apple",
+        "portion": 2,
+        "userId": "4",
+        "weight": 300
+    }
+  ```
