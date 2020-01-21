@@ -36,20 +36,26 @@ class FoodService {
      * @return list of the sorted by date food items
      */
     List<Food> getAllFood(String userId, Date dateLow, Date dateHigh) {
-        List<Food> sortedByDateFood = new ArrayList<>();
+        List<Food> sortedByUserFood = new ArrayList<>();
         for (Food food : foods.values()) {
 
             // Check if the request matches the specified time period and user.
-            if (food.getUserId() != null && dateLow != null && dateHigh != null) {
-                if (food.getUserId().equals(userId) &&
-                        food.getDate().compareTo(dateLow) >= 0 &&
-                        food.getDate().compareTo(dateHigh) <= 0) {
-                    sortedByDateFood.add(food);
+            if (food.getUserId() != null) {
+                if (dateLow != null && dateHigh != null) {
+                    if (food.getUserId().equals(userId) &&
+                            food.getDate().compareTo(dateLow) >= 0 &&
+                            food.getDate().compareTo(dateHigh) <= 0) {
+                        sortedByUserFood.add(food);
+                    }
+                } else {
+                    if (food.getUserId().equals(userId)) {
+                        sortedByUserFood.add(food);
+                    }
                 }
             }
         }
-        logger.debug("Sorted food for user " + userId + ": " + sortedByDateFood.toString());
-        return sortedByDateFood;
+        logger.debug("Sorted food for user " + userId + ": " + sortedByUserFood.toString());
+        return sortedByUserFood;
     }
 
     /**

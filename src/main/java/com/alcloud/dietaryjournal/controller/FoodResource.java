@@ -21,10 +21,10 @@ public class FoodResource {
     private FoodService foodService = new FoodService();
 
     @GET
-    @Path("/{foodId}")
+    @Path("/{userId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Food getFood(@PathParam("foodId") long foodId) {
-        return foodService.getFoodById(foodId);
+    public List<Food> getAllFood(@PathParam("userId") String userId) {
+        return foodService.getAllFood(userId, null,null);
     }
 
     @GET
@@ -34,6 +34,13 @@ public class FoodResource {
                                  @PathParam("datelow") long datelow,
                                  @PathParam("datehigh") long datehigh) {
         return foodService.getAllFood(userId, new Date(datelow), new Date(datehigh));
+    }
+
+    @GET
+    @Path("/{foodId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Food getFood(@PathParam("foodId") long foodId) {
+        return foodService.getFoodById(foodId);
     }
 
     @POST
