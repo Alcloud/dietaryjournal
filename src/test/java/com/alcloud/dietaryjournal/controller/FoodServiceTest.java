@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FoodServiceTest {
@@ -67,11 +66,11 @@ class FoodServiceTest {
         final int actualPortion = actualFoodItem.getPortion();
         final String actualUserId = actualFoodItem.getUserId();
 
-        assertEquals(expectedId, actualId);
-        assertEquals(expectedName, actualName);
-        assertEquals(expectedWeight, actualWeight);
-        assertEquals(expectedPortion, actualPortion);
-        assertEquals(expectedUserId, actualUserId);
+        assertEquals(expectedId, actualId, "IDs didn't match");
+        assertEquals(expectedName, actualName, "Names didn't match");
+        assertEquals(expectedWeight, actualWeight, "Weights didn't match");
+        assertEquals(expectedPortion, actualPortion, "Portions didn't match");
+        assertEquals(expectedUserId, actualUserId, "User IDs didn't match");
     }
 
     @Test
@@ -91,9 +90,9 @@ class FoodServiceTest {
                 new Date(inputStartDate),
                 new Date(inputEndDate));
 
-        assertEquals(expectedListSize, actualFoodList.size());
-        assertEquals(expectedFirstFoodName, actualFoodList.get(0).getName());
-        assertEquals(expectedSecondFoodName, actualFoodList.get(1).getName());
+        assertEquals(expectedListSize, actualFoodList.size(), "List size didn't match");
+        assertEquals(expectedFirstFoodName, actualFoodList.get(0).getName(), "First food names didn't match");
+        assertEquals(expectedSecondFoodName, actualFoodList.get(1).getName(), "Second food names didn't match");
     }
 
     @Test
@@ -112,8 +111,8 @@ class FoodServiceTest {
 
         final long actualFoodId = foodService.addFood(inputFoodItem);
 
-        assertEquals(expectedListSize, testFoods.size());
-        assertEquals(expectedFoodId, actualFoodId);
+        assertEquals(expectedListSize, testFoods.size(), "Food list size didn't match");
+        assertEquals(expectedFoodId, actualFoodId, "Food IDs didn't match");
     }
 
     @Test
@@ -128,8 +127,8 @@ class FoodServiceTest {
 
         final Food actualRemovedFoodItem = foodService.removeFood(inputFoodIdValue);
 
-        assertEquals(expectedListSize, testFoods.size());
-        assertEquals(expectedId, actualRemovedFoodItem.getId());
-        assertEquals(expectedRemovedFoodName, actualRemovedFoodItem.getName());
+        assertEquals(expectedListSize, testFoods.size(), "List sizes didn't match");
+        assertEquals(expectedId, actualRemovedFoodItem.getId(), "Food IDs didn't match");
+        assertEquals(expectedRemovedFoodName, actualRemovedFoodItem.getName(), "Food names didn't match");
     }
 }

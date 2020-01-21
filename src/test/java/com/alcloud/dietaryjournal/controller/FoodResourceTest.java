@@ -2,20 +2,16 @@ package com.alcloud.dietaryjournal.controller;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
-
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
-public class FoodResourceTest {
+class FoodResourceTest {
 
     @Test
-    public void testHelloEndpoint() {
+    void testGetFood() {
         given()
-          .when().get("/foods")
+          .when().get("/1")
           .then()
-             .statusCode(200)
-             .body(is("hello"));
+             .statusCode(200);
     }
-
 }
