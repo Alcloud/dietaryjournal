@@ -20,7 +20,8 @@ http://localhost:8080
    `userId=[string]`
 
 GET Request example:
-  ```GET /foods/4 
+  ```
+GET /foods/4 
 Host: localhost:8080
 Content-Type: application/json
 Cache-Control: no-cache
@@ -35,14 +36,16 @@ Cache-Control: no-cache
    `dateEnd=[long]`
 
 GET Request example:
-  ```GET /foods/4/1579598718223/1579599042409
+  ```
+GET /foods/4/1579598718223/1579599042409
 Host: localhost:8080
 Content-Type: application/json
 Cache-Control: no-cache
   ```
   
 GET Response example:
-  ```[
+  ```
+  [
     {
         "date": "2020-01-21T13:45:24.194Z[UTC]",
         "id": 1,
@@ -68,7 +71,8 @@ GET Response example:
    /foods
  ```
 POST Request example:
-  ```POST /foods
+  ```
+POST /foods
 Host: localhost:8080
 Content-Type: application/json
 cache-control: no-cache
@@ -78,7 +82,8 @@ Body:
   ```
   
 POST Response example:
-  ```"1"
+  ```
+  "1"
   ```
 ## DELETE
 
@@ -90,13 +95,15 @@ where
    `id=[long]`
    
 DELETE Request example:
-  ```DELETE /foods/1
+  ```
+DELETE /foods/1
 Host: localhost:8080
 Content-Type: application/json
 cache-control: no-cache
   ```
 DELETE Response example:
-  ```{
+  ```
+  {
         "date": "2020-01-21T13:45:24.194Z[UTC]",
         "id": 1,
         "name": "apple",
@@ -108,5 +115,6 @@ DELETE Response example:
 
 # Compile and start the project
 
-  ```mvn compile quarkus:dev
-    ```
+  ```
+  mvn compile quarkus:dev
+  ```
