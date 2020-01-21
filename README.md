@@ -112,6 +112,7 @@ DELETE Response example:
         "weight": 300
     }
   ```
+More detailed information you can find [here](https://github.com/Alcloud/dietaryjournal/blob/master/openapi/openapi).
 
 # Compile and start the project
 
